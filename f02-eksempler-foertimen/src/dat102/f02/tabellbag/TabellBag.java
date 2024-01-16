@@ -74,8 +74,9 @@ public class TabellBag<T> implements BagADT<T>{
 
 	@Override
 	public boolean contains(T anEntry) {
-		for(T element : tabell) {
-			if (element != null && element.equals(anEntry)) {
+		for(int i=0; i<antall; i++) {
+			T element = tabell[i];
+			if (element.equals(anEntry)) {
 				return true;
 			}
 		}
