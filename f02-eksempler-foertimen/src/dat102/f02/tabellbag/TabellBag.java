@@ -7,7 +7,7 @@ import java.util.Arrays;
  * 
  * @author Lars-Petter Helland
  */
-public class TabellBag<T> {
+public class TabellBag<T> implements BagADT<T>{
 
 	private static final int DEFAULT_KAPASITET = 10;
 
@@ -24,6 +24,68 @@ public class TabellBag<T> {
 	public TabellBag(int kapasitet) {
 		tabell = (T[]) new Object[kapasitet];
 		antall = 0;
+	}
+
+	@Override
+	public int getCurrentSize() {
+		return antall;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return antall == 0;
+	}
+
+	@Override
+	public boolean add(T newEntry) {
+		if (antall == tabell.length) {
+			return false;
+		}
+		tabell[antall]= newEntry;
+		antall++;
+		return true;
+	}
+
+	@Override
+	public T remove() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean remove(T anEntry) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void clear() {
+		int length = tabell.length;
+		tabell = (T[]) new Object[length];
+		antall= 0;
+		
+	}
+
+	@Override
+	public int getFrequencyOf(T anEntry) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean contains(T anEntry) {
+		for(T element : tabell) {
+			if (element != null && element.equals(anEntry)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public T[] toArray() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/************************************************************/

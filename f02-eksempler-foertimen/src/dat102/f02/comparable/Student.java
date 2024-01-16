@@ -2,7 +2,7 @@ package dat102.f02.comparable;
 
 import java.util.Objects;
 
-public class Student {
+public class Student implements Comparable<Student> {
 	
 	private int studentnr;
 	private String navn;
@@ -12,6 +12,10 @@ public class Student {
 		this.navn = navn;
 	}
 	
+	@Override
+	public int compareTo(Student other) {
+		return this.studentnr - other.studentnr;
+	}
 	
 	
 	/*
@@ -49,4 +53,7 @@ public class Student {
 	public String toString() {
 		return "[studentnr=" + studentnr + ", navn=" + navn + "]";
 	}
+
+	
+	
 }
