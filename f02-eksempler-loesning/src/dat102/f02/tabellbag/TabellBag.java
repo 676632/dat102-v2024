@@ -39,7 +39,8 @@ public class TabellBag<T> implements BagADT<T>{
 	@Override
 	public boolean add(T newEntry) {
 		if (antall == tabell.length) {
-			return false;
+			//return false;
+			tabell = Arrays.copyOf(tabell, tabell.length * 2);
 		}
 		tabell[antall] = newEntry;
 		antall++;
@@ -48,9 +49,10 @@ public class TabellBag<T> implements BagADT<T>{
 
 	@Override
 	public T remove() {
-		if (antall > 0) {
+		if (!isEmpty()) {
 			//Fjerner siste. Slipper å tette hull.
 			T element = tabell[antall - 1];
+			tabell[antall - 1] = null;
 			antall--;
 			return element;
 		}
