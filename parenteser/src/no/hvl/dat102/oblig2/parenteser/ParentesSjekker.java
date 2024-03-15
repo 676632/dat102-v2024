@@ -12,7 +12,15 @@ public class ParentesSjekker {
 		
 		StabelADT<Character> stabel = new TabellStabel<>();
 		
-		//TODO Ca. 10-15 kodelinjer her gir en komplett løsning 
+		for (char c : s.toCharArray()) {
+            if (erStartParentes(c)) {
+                stabel.push(c);
+            } else if (erSluttParentes(c)) {
+                if (stabel.isEmpty() || !erParentesPar(stabel.pop(), c)) {
+                    return false;
+                }
+            }
+        }
 		return false;
 	}
 
